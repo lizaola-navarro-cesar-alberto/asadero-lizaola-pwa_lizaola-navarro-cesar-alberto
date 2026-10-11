@@ -19,6 +19,15 @@ body {
   line-height: 1.6;
 }
 
+header img, .logo img {
+  max-height: 70px;
+  width: auto;
+  object-fit: contain;
+  /* Esto ayuda a fundir el blanco con el fondo oscuro si el logo es oscuro */
+  mix-blend-mode: screen; 
+  background: transparent;
+}
+
 /* ==========================================
    APPBAR (BARRA SUPERIOR)
    ========================================== */
