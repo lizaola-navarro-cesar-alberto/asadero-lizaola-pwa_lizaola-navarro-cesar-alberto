@@ -19,13 +19,79 @@ body {
   line-height: 1.6;
 }
 
-header img, .logo img {
-  max-height: 70px;
+/* Estilo base para PC (el que te gusta) */
+.appbar-custom {
+  background: linear-gradient(90deg, #ffffff 15%, #7d3636 15%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.header-logo-box {
+  display: flex;
+  align-items: center;
+  width: 140px;
+}
+
+.header-logo-img {
+  height: 60px;
   width: auto;
   object-fit: contain;
-  /* Esto ayuda a fundir el blanco con el fondo oscuro si el logo es oscuro */
-  mix-blend-mode: screen; 
-  background: transparent;
+  display: block;
+}
+
+.header-title-box {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+}
+
+.header-title-text {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: .5px;
+  margin: 0;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.header-right-box {
+  width: 140px;
+}
+
+/* ==========================================
+   ADAPTACIÓN PARA CELULARES (Móviles)
+   ========================================== */
+@media (max-width: 768px) {
+  .appbar-custom {
+    /* Hacemos que el fondo blanco abarque un poco más en pantallas chicas para que el logo quepa bien */
+    background: linear-gradient(90deg, #ffffff 35%, #7d3636 35%);
+    padding: 0.5rem 0.75rem;
+  }
+
+  .header-logo-box {
+    width: 100px;
+  }
+
+  .header-logo-img {
+    height: 45px; /* Reducimos la altura para que no desborde en el celular */
+  }
+
+  .header-title-text {
+    font-size: 1.15rem; /* Achicamos ligeramente el texto para que quepa centrado sin estorbar */
+  }
+
+  .header-right-box {
+    width: 40px; /* Reducimos el espaciador derecho en móviles para ganar espacio */
+  }
 }
 
 /* ==========================================
