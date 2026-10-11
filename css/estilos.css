@@ -1,0 +1,305 @@
+* { box-sizing: border-box; }
+
+:root {
+  --bg-app: #0f0e0e;          /* Fondo general tipo carbón/asador */
+  --bg-card: #181717;         /* Fondo de tarjetas y secciones */
+  --border-card: #2c2929;     /* Bordes sutiles oscuros */
+  --color-primary: #7d3636;   /* Rojo brasa / Fuego */
+  --color-primary-hover: #ba5656; 
+  --color-accent: #ffc767;    /* Dorado/Ámbar para precios */
+  --text-main: #f3f4f6;       /* Texto claro principal */
+  --text-muted: #9ca3af;      /* Texto secundario */
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-app);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* ==========================================
+   APPBAR (BARRA SUPERIOR)
+   ========================================== */
+.appbar {
+  background: linear-gradient(180deg, #181717 0%, #0f0e0e 100%);
+  color: white;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--color-primary);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.appbar h1 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin: 0;
+  text-transform: uppercase;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Píldora de conexión */
+.pill {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.pill.sin-conexion { 
+  background: rgba(234, 88, 12, 0.15); 
+  color: #fb923c; 
+  border-color: rgba(251, 146, 60, 0.3);
+}
+
+/* ==========================================
+   CONTENEDOR PRINCIPAL Y SECCIONES
+   ========================================== */
+main {
+  max-width: 1250px; /* Ampliamos para que entren más productos a la vista */
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+
+
+section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+section h2 {
+  font-size: 1.25rem;
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-left: 4px solid var(--color-primary);
+  padding-left: 0.75rem;
+}
+
+/* Asegura que al saltar con un ancla (#), el contenido no quede oculto bajo las barras fijas */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 170px; /* Aumentamos el espacio de respiro para que baje más */
+}
+
+/* Ajuste de la barra de navegación sticky para que se quede justo debajo del header */
+.menu-navegacion {
+  position: sticky;
+  top: 110px; /* Debe ser exactamente la altura aproximada de tu header */
+  z-index: 999;
+  background: rgba(24, 23, 23, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  border-bottom: 1px solid #2c2929;
+  justify-content: center;
+}
+
+/* ==========================================
+   CATÁLOGO Y TARJETAS DE PRODUCTO
+   ========================================== */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  /* Muestra de 3 a 4 columnas fluidas dependiendo de la pantalla */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+}
+
+.producto {
+  background: #201e1e;
+  border: 2px solid #2f3033;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.producto:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 25px #411c1c;
+}
+
+.producto__foto {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.85rem;
+  background: #121111;
+}
+
+.producto strong { 
+  display: block; 
+  margin-bottom: 0.35rem; 
+  font-size: 1.05rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.producto .precio { 
+  color: var(--color-accent); 
+  font-weight: 800; 
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.producto p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin: 0 0 1rem 0;
+}
+
+/* Botones generales */
+button {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  letter-spacing: 0.3px;
+}
+
+button:hover { 
+  background: var(--color-primary-hover); 
+  box-shadow: 0 4px 12px rgba(153, 27, 27, 0.4);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+.producto button {
+  margin-top: auto;
+  width: 100%;
+}
+
+.mensaje { color: var(--text-muted); font-size: 0.9rem; min-height: 1.2em; }
+.mensaje a { color: #f87171; font-weight: 600; text-decoration: none; }
+.mensaje a:hover { text-decoration: underline; }
+
+.sucursal-info { color: var(--text-muted); font-size: 0.9rem; margin: 0 0 .75rem; }
+
+/* Mapa */
+.mapa {
+  height: 260px;
+  border-radius: 10px;
+  margin-top: .75rem;
+  border: 1px solid var(--border-card);
+}
+
+/* ==========================================
+   CARRITO DE COMPRAS
+   ========================================== */
+#carrito-lista { list-style: none; padding: 0; margin: 0; }
+#carrito-lista li {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid #2c2929;
+  padding: 0.85rem 0;
+}
+
+#carrito-lista li:last-child {
+  border-bottom: none;
+}
+
+.carrito-nombre { font-weight: 600; color: #fff; font-size: 1rem; }
+
+.carrito-cantidad {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  background: #121111;
+  border: 1px solid #332f2f;
+  border-radius: 8px;
+  padding: 3px;
+}
+.carrito-cantidad button {
+  padding: .2rem .6rem;
+  font-size: .9rem;
+  background: var(--color-primary);
+  border-radius: 6px;
+}
+.carrito-cantidad__valor {
+  min-width: 1.5rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: #fff;
+}
+
+.carrito-precio { font-weight: 800; color: var(--color-accent); white-space: nowrap; font-size: 1.05rem; }
+
+.carrito-quitar {
+  background: transparent;
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  padding: .35rem .7rem;
+  font-size: .8rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.carrito-quitar:hover { background: rgba(248, 113, 113, 0.1); color: #ef4444; box-shadow: none; }
+
+/* ==========================================
+   DISEÑO RESPONSIVO PARA MÓVILES
+   ========================================== */
+@media (max-width: 480px) {
+  main {
+    padding: 0.5rem;
+    margin: 1rem auto;
+  }
+  
+  section {
+    padding: 1rem;
+  }
+
+  #carrito-lista li { 
+    grid-template-columns: 1fr auto; 
+    grid-template-areas: 
+      "nombre nombre" 
+      "cantidad precio" 
+      "quitar quitar";
+    gap: 0.6rem;
+    padding: 1rem 0;
+  }
+
+  .carrito-nombre { grid-area: nombre; font-size: 1.05rem; }
+  .carrito-cantidad { grid-area: cantidad; justify-self: start; }
+  .carrito-precio { grid-area: precio; justify-self: end; font-size: 1.1rem; }
+  .carrito-quitar { grid-area: quitar; justify-self: start; margin-top: 0.2rem; }
+
+  
+  
+}
