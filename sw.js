@@ -2,7 +2,7 @@ if(!self.define){let e,i={};const s=(s,r)=>(s=new URL(s+".js",r).href,i[s]||new 
 //# sourceMappingURL=sw.js.map
 //# sourceMappingURL=sw.js.map
 
-// sw.js — Service Worker de la Tienda Escolar
+// sw.js — Service Worker de la Asadero Lizaola
 // Un Service Worker es un script que el navegador ejecuta APARTE de la página,
 // incluso cuando la pestaña está cerrada. Su superpoder es interceptar peticiones
 // de red y decidir: ¿la resuelvo con caché, con internet, o con las dos?

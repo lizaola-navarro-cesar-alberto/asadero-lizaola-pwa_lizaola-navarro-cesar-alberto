@@ -19,9 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
     Notification.requestPermission().then((permiso) => {
       if (permiso === "granted") {
         // Creamos una notificación de prueba. title, luego un objeto con opciones.
-        new Notification("Tienda Escolar", {
+        new Notification("Asadero Lizaola", {
           body: "¡Listo! Te avisaremos cuando haya nuevas ofertas.",
-          icon: "icons/icon.svg",
+          icon: "icons/logo-lizaola1.svg",
         });
         mensaje.textContent = "Notificaciones activadas.";
       } else {

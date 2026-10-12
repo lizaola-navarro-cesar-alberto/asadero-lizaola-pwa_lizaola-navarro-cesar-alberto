@@ -1,6 +1,6 @@
 {
   "id": "./",
-  "name": "Tienda Escolar",
+  "name": "Asadero Lizaola",
   "short_name": "Tienda",
   "description": "PWA de ventas de práctica para la Unidad 2",
   "start_url": "./index.html",
@@ -12,7 +12,7 @@
   "theme_color": "#0e6b5c",
   "icons": [
     {
-      "src": "icons/icon.svg",
+      "src": "icons/logo-lizaola1.png",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
