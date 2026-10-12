@@ -23,20 +23,21 @@
        contenedores vacíos). El Service Worker lo cachea completo para que
        cargue instantáneo incluso sin internet; solo los DATOS de adentro
        cambian (los llena JavaScript, ver csr.js). -->
-
-<header class="appbar-custom">
+<header class="appbar" style="background: linear-gradient(90deg, #ffffff 15%, #7d3636 15%); color: white; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);">
+    
     <!-- 1. Logo a la izquierda -->
-    <div class="header-logo-box">
-      <img src="icons/logo-lizaola1.png" alt="Logo Asadero Lizaola" class="header-logo-img">
+    <div style="display: flex; align-items: center; width: 140px;">
+      <img src="icons/logo-lizaola1.png" alt="Logo Asadero Lizaola" style="height: 60px; width: auto; object-fit: contain; display: block;">
     </div>
 
-    <!-- 2. Título al centro -->
-    <div class="header-title-box">
-      <h1 class="header-title-text">Asadero Lizaola</h1>
+    <!-- 2. Título exactamente al centro de la web (dentro del header rojo) -->
+    <div style="display: flex; justify-content: center; flex: 1; text-align: center;">
+      <h1 style="font-size: 2rem; font-weight: 800; letter-spacing: .5px; margin: 0; text-transform: uppercase; color: #ffffff; line-height: 1.1;">Asadero Lizaola</h1>
     </div>
 
     <!-- 3. Espaciador derecho -->
-    <div class="header-right-box"></div>
+    <div style="display: flex; justify-content: flex-end; width: 140px;"></div>
+
 </header>
 
   <nav class="menu-navegacion">

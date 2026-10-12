@@ -180,7 +180,7 @@ html {
 /* Ajuste de la barra de navegación sticky para que se quede justo debajo del header */
 .menu-navegacion {
   position: sticky;
-  top: 110px; /* Debe ser exactamente la altura aproximada de tu header */
+  top: 85px; /* Ajusta este valor exacto según la altura de tu header (si tu header mide aprox 85px de alto, pon esto) */
   z-index: 999;
   background: rgba(24, 23, 23, 0.95);
   backdrop-filter: blur(10px);
@@ -190,6 +190,7 @@ html {
   overflow-x: auto;
   border-bottom: 1px solid #2c2929;
   justify-content: center;
+  margin-top: 0; /* Asegura que no tenga margen superior */
 }
 
 /* ==========================================
