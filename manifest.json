@@ -1,33 +1,27 @@
 {
   "id": "./",
   "name": "Asadero Lizaola",
-  "short_name": "Tienda",
-  "description": "PWA de ventas de práctica para la Unidad 2",
+  "short_name": "Asadero",
+  "description": "Menú digital PWA de Asadero Lizaola: cortes de carne, comidas, bebidas y extras con opción de pedidos.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "categories": ["shopping", "education"],
-  "background_color": "#f1f5f4",
-  "theme_color": "#0e6b5c",
+  "categories": ["food", "shopping"],
+  "background_color": "#0f0e0e",
+  "theme_color": "#7d3636",
   "icons": [
     {
       "src": "icons/logo-lizaola1.png",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-512.png",
+      "src": "icons/logo-lizaola1.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     }
   ]
 }
