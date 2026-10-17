@@ -51,11 +51,11 @@ fetch("catalogo.json")
       // IDs del 9 al 12: Guarniciones y Extras (Guacamole, Frijoles maneados, Salsa, Salchicha)
       // IDs del 13 al 18: Bebidas (CocaCola, Horchata, Limonada, Cerveza, etc.)
       
-      if (producto.id >= 1 && producto.id <= 8) {
+      if (producto.id >= 1 && producto.id <= 6) {
         if (contenedorComida) contenedorComida.appendChild(tarjeta);
-      } else if (producto.id >= 9 && producto.id <= 12) {
+      } else if (producto.id >= 7 && producto.id <= 10) {
         if (contenedorExtras) contenedorExtras.appendChild(tarjeta);
-      } else if (producto.id >= 13 && producto.id <= 18) {
+      } else if (producto.id >= 11 && producto.id <= 15) {
         if (contenedorBebidas) contenedorBebidas.appendChild(tarjeta);
       } else {
         // Por defecto si hubiera algún otro ID

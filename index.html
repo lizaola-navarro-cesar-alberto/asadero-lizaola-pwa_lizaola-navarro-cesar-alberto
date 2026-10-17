@@ -5,25 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Asadero Lizaola — PWA de ventas</title>
 
-  <!-- Estas 3 líneas son las que convierten este sitio en una PWA instalable -->
+  <!-- PWA Manifest & Icons -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#7F1D1D">
   <link rel="icon" href="icons/logo-lizaola1.png" type="image/svg+xml">
 
   <link rel="stylesheet" href="css/estilos.css">
 
-  <!-- Leaflet: librería de mapas gratuita (sin API key) que usamos solo para
-       dibujar la ruta hasta la sucursal (ver js/geolocalizacion.js) -->
+  <!-- Leaflet Maps CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
 <body>
 
-  <!-- ============ APP SHELL ============
-       El "app shell" es el esqueleto que SIEMPRE se ve igual (header, nav,
-       contenedores vacíos). El Service Worker lo cachea completo para que
-       cargue instantáneo incluso sin internet; solo los DATOS de adentro
-       cambian (los llena JavaScript, ver csr.js). -->
-<header class="appbar-custom">
+  <!-- ============ APP SHELL ============ -->
+  <header class="appbar-custom">
     <!-- 1. Logo a la izquierda -->
     <div class="header-logo-box">
       <img src="icons/logo-lizaola1.png" alt="Logo Asadero Lizaola" class="header-logo-img">
@@ -36,77 +31,80 @@
 
     <!-- 3. Espaciador derecho -->
     <div class="header-right-box"></div>
-</header>
+  </header>
 
+  <!-- Navegación por Categorías (3 Categorías) -->
   <nav class="menu-navegacion">
-  <a href="#seccion-comida" style="color: #fff; text-decoration: none; font-weight: 600; font-size: 0.85rem; padding: 0.4rem 1rem; background: #7d3636; border-radius: 999px; white-space: nowrap;" onclick="seleccionarNav(this)">🥩 Cortes y Comida</a>
-  <a href="#seccion-bebidas" style="color: #9ca3af; text-decoration: none; font-weight: 600; font-size: 0.85rem; padding: 0.4rem 1rem; background: #1c1a1a; border-radius: 999px; white-space: nowrap;" onclick="seleccionarNav(this)">🥤 Bebidas</a>
-  <a href="#seccion-extras" style="color: #9ca3af; text-decoration: none; font-weight: 600; font-size: 0.85rem; padding: 0.4rem 1rem; background: #1c1a1a; border-radius: 999px; white-space: nowrap;" onclick="seleccionarNav(this)">🔥 Extras</a>
-</nav>
+    <a href="#seccion-comida" style="color: #fff; text-decoration: none; font-weight: 600; font-size: 0.85rem; padding: 0.4rem 1rem; background: #7d3636; border-radius: 999px; white-space: nowrap;" onclick="seleccionarNav(this)">🥩 Cortes y Comida</a>
+    <a href="#seccion-bebidas" style="color: #9ca3af; text-decoration: none; font-weight: 600; font-size: 0.85rem; padding: 0.4rem 1rem; background: #1c1a1a; border-radius: 999px; white-space: nowrap;" onclick="seleccionarNav(this)">🥤 Bebidas</a>
+    <a href="#seccion-extras" style="color: #9ca3af; text-decoration: none; font-weight: 600; font-size: 0.85rem; padding: 0.4rem 1rem; background: #1c1a1a; border-radius: 999px; white-space: nowrap;" onclick="seleccionarNav(this)">🔥 Extras</a>
+  </nav>
 
   <main>
-  
-  <!-- SECCIÓN 1: COMIDA / CORTES -->
-  <section id="seccion-comida">
-    <h2>Cortes y Comida</h2>
-    <div class="grid" id="catalogo-comida">
-      <!-- Aquí cargan dinámicamente tus productos de comida -->
-      <!-- Ejemplo estático de tarjeta -->
-      <div class="producto">
-        <img src="icons/arrachera.jpg" alt="Arrachera" class="producto__foto">
-        <strong>Arrachera (kg)</strong>
-        <span class="precio">$480</span>
-        <p>Stock: 20</p>
-        <button>Agregar al carrito</button>
+    <!-- SECCIÓN 1: COMIDA / CORTES -->
+    <section id="seccion-comida">
+      <h2>Cortes y Comida</h2>
+      <div class="grid" id="catalogo-comida">
+        <!-- Aquí cargan dinámicamente tus productos mediante csr.js -->
+        <div class="producto">
+          <img src="icons/arrachera.jpg" alt="Arrachera" class="producto__foto">
+          <strong>Arrachera (kg)</strong>
+          <span class="precio">$480</span>
+          <p>Stock: 20</p>
+          <button type="button" onclick="agregarAlCarrito({ id: 1, nombre: 'Arrachera (kg)', precio: 480 })">Agregar al carrito</button>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SECCIÓN 2: BEBIDAS -->
-  <section id="seccion-bebidas">
-    <h2>Bebidas</h2>
-    <div class="grid" id="catalogo-bebidas">
-      <!-- Aquí cargan dinámicamente tus bebidas -->
-    </div>
-  </section>
+    <!-- SECCIÓN 2: BEBIDAS -->
+    <section id="seccion-bebidas">
+      <h2>Bebidas</h2>
+      <div class="grid" id="catalogo-bebidas">
+        <!-- Aquí cargan dinámicamente tus bebidas -->
+      </div>
+    </section>
 
-  <!-- SECCIÓN 3: EXTRAS / GUARNICIONES (Opcional) -->
-  <section id="seccion-extras">
-    <h2>Guarniciones y Extras</h2>
-    <div class="grid" id="catalogo-extras">
-      <!-- Aquí cargan dinámicamente los extras -->
-    </div>
-  </section>
+    <!-- SECCIÓN 3: EXTRAS / GUARNICIONES -->
+    <section id="seccion-extras">
+      <h2>Guarniciones y Extras</h2>
+      <div class="grid" id="catalogo-extras">
+        <!-- Aquí cargan dinámicamente los extras -->
+      </div>
+    </section>
 
-  <!-- SECCIÓN: CARRITO DE COMPRAS
-  <section id="seccion-carrito">
-    <h2>🛒 Tu Carrito</h2>
-    <ul id="carrito-lista">
+    <!-- SECCIÓN: CARRITO DE COMPRAS (ACTIVADO PARA EVALUACIÓN) -->
+    <section id="seccion-carrito" style="margin-top: 2rem; padding: 1.5rem; background: #1c1a1a; border-radius: 12px; color: #fff;">
+      <h2>🛒 Tu Carrito</h2>
       
-    </ul>
-    <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
-      <span style="font-size: 1.1rem; font-weight: 700;">Total:</span>
-      <span id="carrito-total" class="carrito-precio">$0.00</span>
-    </div>
-    <button style="width: 100%; margin-top: 1rem;" id="btn-comprar">Finalizar Pedido</button>
-  </section>-->
+      <ul id="carrito-lista" style="list-style: none; padding: 0; margin: 1rem 0;">
+        <!-- Se llena dinámicamente con js/carrito.js -->
+      </ul>
 
-  <!-- SECCIÓN: SUCURSAL Y MAPA 
-  <section>
-    <h2>📍 Ubicación</h2>
-    <p class="sucursal-info">Asadero Lizaola - Hermosillo, Sonora</p>
-    <div class="mapa" id="mapa"></div>
-  </section>-->
+      <div style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #333; padding-top: 1rem;">
+        <span style="font-size: 1.1rem; font-weight: 700;">Total:</span>
+        <span class="carrito-precio" style="font-size: 1.25rem; font-weight: bold; color: #ffc767;">$<span id="carrito-total">0</span></span>
+      </div>
 
-</main>
+      <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+        <button type="button" id="btn-sincronizar" style="background: #7d3636; color: white; padding: 0.75rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Sincronizar Carrito</button>
+        <p id="carrito-mensaje" style="font-size: 0.85rem; color: #9ca3af; text-align: center; margin: 0;"></p>
+      </div>
+    </section>
 
-<footer style="background: linear-gradient(180deg, #151414 0%, #0a0909 100%); border-top: 2px solid #7d3636; color: #f3f4f6; margin-top: 4rem; padding: 2.5rem 1.5rem 1.5rem; box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);">
+    <!-- SECCIÓN: SUCURSAL Y MAPA (Opcional/Habilitada) -->
+    <section style="margin-top: 2rem;">
+      <!--<h2>📍 Ubicación</h2>
+      <p class="sucursal-info">Asadero Lizaola - Hermosillo, Sonora</p>
+      <div class="mapa" id="mapa"></div>
+    </section>-->
+  </main>
+
+  <footer style="background: linear-gradient(180deg, #151414 0%, #0a0909 100%); border-top: 2px solid #7d3636; color: #f3f4f6; margin-top: 4rem; padding: 2.5rem 1.5rem 1.5rem; box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);">
     <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2.5rem; text-align: center; align-items: start;">
       
       <!-- 1. Horarios -->
       <div style="display: flex; flex-direction: column; align-items: center;">
         <div style="width: 48px; height: 48px; background: #7d3636; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 0.85rem; box-shadow: 0 4px 12px rgba(125, 54, 54, 0.4);">
-          <!-- Icono Reloj -->
           <svg style="width: 24px; height: 24px; fill: #ffffff;" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"/></svg>
         </div>
         <p style="margin: 0 0 0.25rem; font-weight: 700; color: #ffffff; font-size: 0.95rem;">Lunes a Domingo</p>
@@ -116,25 +114,21 @@
       <!-- 2. Ubicación -->
       <div style="display: flex; flex-direction: column; align-items: center;">
         <div style="width: 48px; height: 48px; background: #7d3636; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 0.85rem; box-shadow: 0 4px 12px rgba(125, 54, 54, 0.4);">
-          <!-- Icono Ubicación -->
           <svg style="width: 24px; height: 24px; fill: #ffffff;" viewBox="0 0 24 24"><path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/></svg>
         </div>
         <p style="margin: 0 0 0.25rem; font-weight: 700; color: #ffffff; font-size: 0.95rem;">Hermosillo, Sonora.</p>
-        <p style="margin: 0; color: #9ca3af; font-size: 0.85rem;">Asadero Lizaola</p>
+        <p style="margin: 0; color: #9ca3af; font-size: 0.85rem;">Asadero Lizaola</p>-->
       </div>
 
       <!-- 3. Redes y Teléfono -->
       <div style="display: flex; flex-direction: column; align-items: center;">
         <div style="display: flex; gap: 0.75rem; margin-bottom: 0.85rem;">
-          <!-- Teléfono -->
           <div style="width: 42px; height: 42px; background: #7d3636; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(125, 54, 54, 0.4);">
             <svg style="width: 20px; height: 20px; fill: #ffffff;" viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg>
           </div>
-          <!-- Facebook -->
           <div style="width: 42px; height: 42px; background: #7d3636; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(125, 54, 54, 0.4);">
             <svg style="width: 20px; height: 20px; fill: #ffffff;" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"/></svg>
           </div>
-          <!-- Instagram -->
           <div style="width: 42px; height: 42px; background: #7d3636; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(125, 54, 54, 0.4);">
             <svg style="width: 20px; height: 20px; fill: #ffffff;" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.4 5.6 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.6 18.4 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
           </div>
@@ -142,24 +136,19 @@
         <p style="margin: 0 0 0.25rem; font-weight: 700; color: #ffffff; font-size: 0.95rem;">@AsaderoLizaola</p>
         <p style="margin: 0; color: #ffc767; font-weight: 600; font-size: 0.85rem;">Tel: (662) 123-4567</p>
       </div>
-
     </div>
 
-    <!-- Créditos de la PWA -->
     <div style="max-width: 1100px; margin: 2rem auto 0; padding-top: 1rem; border-top: 1px solid #2c2929; text-align: center; font-size: 0.75rem; color: #6b7280;">
       <p style="margin: 0;">Unidad 2 · PWA de ventas de ejemplo &copy; 2026 <strong>Asadero Lizaola</strong></p>
     </div>
   </footer>
 
-  <!-- Cargamos los scripts al final del <body>: así el HTML ya existe
-       cuando el JavaScript intenta buscar los elementos con document.getElementById -->
+  <!-- Scripts -->
   <script src="js/carrito.js"></script>
   <script src="js/csr.js"></script>
   <script src="js/notificaciones.js"></script>
-  <!-- Leaflet debe cargar ANTES de geolocalizacion.js: ese script usa el
-       objeto global "L" que esta librería crea -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-  <script src="js/geolocalizacion.js"></script>
+  <!-- <script src="js/geolocalizacion.js"></script>-->
   <script src="js/app.js"></script>
 </body>
 </html>
