@@ -1,13 +1,10 @@
 """
-Rutas propias de la app "catalogo_lnca".
-
-Django separa las rutas por app para que cada una sea independiente
-y reutilizable en otros proyectos.
+Rutas propias de la app "catalogo".
 """
 from django.urls import path
-from . import views  # importamos las funciones definidas en views.py de esta misma carpeta
+from . import views
 
 urlpatterns = [
-    # http://127.0.0.1:8000/catalogo_lnca/  -> ejecuta la función vista_ssr()
-    path('catalogo_lnca/', views.vista_ssr, name='catalogo_ssr'),
+    # http://127.0.0.1:8000/menu/ -> ejecuta vista_ssr
+    path('menu/', views.vista_ssr, name='catalogo_ssr'),
 ]

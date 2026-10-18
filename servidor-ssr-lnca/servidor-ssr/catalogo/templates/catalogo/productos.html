@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Asadero Lizaola - Menú SSR</title>
+    <style>
+        body { font-family: system-ui, sans-serif; background: #f1f5f4; color: #142523; margin: 2rem; }
+        h1 { color: #0e6b5c; }
+        ul { list-style: none; padding: 0; }
+        li { background: #fff; border: 1px solid #d7e0dc; border-radius: 8px; padding: .75rem 1rem; margin-bottom: .5rem; }
+        .precio { font-weight: bold; color: #ff7a45; }
+    </style>
+</head>
+<body>
+    <h1>Menú del Asadero Lizaola (SSR)</h1>
+    <p>Este HTML ya viene con los productos escritos desde el servidor.</p>
+    <ul>
+      {% for producto in productos %}
+        <li>
+          <strong>{{ producto.nombre }}</strong> — 
+          <span class="precio">${{ producto.precio }} MXN</span> 
+          (<em>{{ producto.categoria }}</em>)
+        </li>
+      {% endfor %}
+    </ul>
+</body>
+</html>

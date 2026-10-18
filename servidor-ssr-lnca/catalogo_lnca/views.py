@@ -1,14 +1,11 @@
 from django.shortcuts import render
 
-# "Base de datos" falsa: una lista de diccionarios en memoria.
-# En un proyecto real esto vendría de un modelo (models.py) y una tabla,
-# pero para ENTENDER qué es SSR no necesitamos base de datos: lo importante
-# es que estos datos se insertan en el HTML *antes* de enviarlo al navegador.
+# "Base de datos" falsa: los productos reales del Asadero Lizaola
 PRODUCTOS = [
-    {"nombre": "Playera UT Hermosillo", "precio": 250, "stock": 40},
-    {"nombre": "Sudadera TIC", "precio": 480, "stock": 15},
-    {"nombre": "Taza PWA", "precio": 120, "stock": 60},
-    {"nombre": "Mochila 10mo cuatrimestre", "precio": 690, "stock": 8},
+    {"id": 1, "nombre": "Arrachera (kg)", "precio": 480, "categoria": "Cortes y Comida"},
+    {"id": 2, "nombre": "Rib eye (kg)", "precio": 520, "categoria": "Cortes y Comida"},
+    {"id": 3, "nombre": "Guacamole", "precio": 65, "categoria": "Extras"},
+    {"id": 4, "nombre": "Coca Cola 600ml", "precio": 35, "categoria": "Bebidas"},
 ]
 
 
