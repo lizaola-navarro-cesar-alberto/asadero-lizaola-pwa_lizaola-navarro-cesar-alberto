@@ -1,5 +1,5 @@
 // sw.js — Service Worker de Asadero Lizaola PWA
-const NOMBRE_CACHE = "asadero-lizaola-v2";
+const NOMBRE_CACHE = "asadero-lizaola-v3";
 
 // Lista del "app shell": todos los recursos reales que componen la PWA
 const APP_SHELL = [
@@ -59,11 +59,29 @@ self.addEventListener("activate", (evento) => {
   self.clients.claim();
 });
 
-// Evento "fetch": estrategia Cache-First con respaldo de red
+// Evento "fetch": Network-First para HTML (para que siempre veas cambios sin Ctrl+F5)
+// y Cache-First para recursos estáticos (imágenes, estilos, iconos)
 self.addEventListener("fetch", (evento) => {
   if (evento.request.method !== "GET") return;
   if (!evento.request.url.startsWith("http")) return;
 
+  // Si es la página HTML o navegación, busca primero en internet
+  if (evento.request.mode === "navigate" || evento.request.destination === "document") {
+    evento.respondWith(
+      fetch(evento.request)
+        .then((respuestaDeRed) => {
+          if (respuestaDeRed && respuestaDeRed.status === 200) {
+            const copia = respuestaDeRed.clone();
+            caches.open(NOMBRE_CACHE).then((cache) => cache.put(evento.request, copia));
+          }
+          return respuestaDeRed;
+        })
+        .catch(() => caches.match(evento.request)) // Si no hay internet, usa el caché
+    );
+    return;
+  }
+
+  // Para el resto de archivos (imágenes, css, iconos), usa Cache-First
   evento.respondWith(
     caches.match(evento.request).then((respuestaGuardada) => {
       if (respuestaGuardada) return respuestaGuardada;

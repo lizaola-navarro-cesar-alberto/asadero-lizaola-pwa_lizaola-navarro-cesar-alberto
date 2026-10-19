@@ -20,6 +20,7 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker
       .register("sw.js")
       .then((registro) => {
+        registro.update();
         console.log("Service Worker registrado con éxito:", registro.scope);
       })
       .catch((error) => {

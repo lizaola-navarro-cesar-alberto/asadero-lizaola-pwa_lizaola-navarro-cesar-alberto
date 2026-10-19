@@ -13,12 +13,12 @@
 | Avance | Hash del commit entregado | Fecha |
 |---|---|---|
 | 1 | 12b7a0a | 11/10/2026 |
-| 2 | (se escribe en el siguiente avance) | 18/10/2026 |
+| 2 | 8e28672 | 18/10/2026 |
 | 3 | (se escribe en el siguiente avance) | 25/10/2026 |
 | 4 | (se escribe en el reporte PDF) | 01/11/2026 |
 
 ## Comparación SSR vs CSR
-
+git add .
 ### SSR (Django): los productos llegan escritos en el HTML
 ![Código fuente SSR](docs/captura-ssr.png)
 
