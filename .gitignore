@@ -1,0 +1,23 @@
+﻿# Entorno virtual de Python
+venv/
+**/venv/
+env/
+**/env/
+
+# Base de datos SQLite
+*.sqlite3
+db.sqlite3
+**/db.sqlite3
+
+# Python bytecode y caché
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE y editores
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store

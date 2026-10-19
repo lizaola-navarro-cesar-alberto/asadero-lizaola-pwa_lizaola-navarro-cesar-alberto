@@ -107,6 +107,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const boton = document.getElementById("btn-ubicacion");
   const mensaje = document.getElementById("ubicacion-mensaje");
 
+  if (!boton) return;
+
   boton.addEventListener("click", () => {
     if (!("geolocation" in navigator)) {
       mensaje.textContent = "Este dispositivo no reporta ubicación.";

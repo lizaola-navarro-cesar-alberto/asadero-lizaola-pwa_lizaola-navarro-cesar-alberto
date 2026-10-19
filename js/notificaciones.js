@@ -7,10 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const boton = document.getElementById("btn-notificar");
   const mensaje = document.getElementById("notificaciones-mensaje");
 
+  if (!boton) return;
+
   boton.addEventListener("click", () => {
     // "Notification" no existe en todos los navegadores/contextos; lo comprobamos primero
     if (!("Notification" in window)) {
-      mensaje.textContent = "Este navegador no soporta notificaciones.";
+      if (mensaje) mensaje.textContent = "Este navegador no soporta notificaciones.";
       return;
     }
 
@@ -21,11 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
         // Creamos una notificación de prueba. title, luego un objeto con opciones.
         new Notification("Asadero Lizaola", {
           body: "¡Listo! Te avisaremos cuando haya nuevas ofertas.",
-          icon: "icons/logo-lizaola1.svg",
+          icon: "icons/logo-lizaola1.png",
         });
-        mensaje.textContent = "Notificaciones activadas.";
+        if (mensaje) mensaje.textContent = "Notificaciones activadas.";
       } else {
-        mensaje.textContent = "No diste permiso para notificaciones.";
+        if (mensaje) mensaje.textContent = "No diste permiso para notificaciones.";
       }
     });
   });

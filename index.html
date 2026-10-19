@@ -8,7 +8,7 @@
   <!-- PWA Manifest & Icons -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#7F1D1D">
-  <link rel="icon" href="icons/logo-lizaola1.png" type="image/svg+xml">
+  <link rel="icon" href="icons/logo-lizaola1.png" type="image/png">
 
   <link rel="stylesheet" href="css/estilos.css">
 
@@ -29,46 +29,26 @@
       <h1 class="header-title-text">Asadero Lizaola</h1>
     </div>
 
-    <!-- 3. Espaciador derecho -->
-    <div class="header-right-box"></div>
+    <!-- 3. Estado de conexión -->
+    <div class="header-right-box">
+      <span id="estado-conexion" class="pill">conectado</span>
+    </div>
   </header>
 
-  <!-- Navegación por Categorías (3 Categorías) -->
-  <nav class="menu-navegacion">
-    <a href="#seccion-comida" style="color: #fff; text-decoration: none; font-weight: 600; font-size: 0.85rem; padding: 0.4rem 1rem; background: #7d3636; border-radius: 999px; white-space: nowrap;" onclick="seleccionarNav(this)">🥩 Cortes y Comida</a>
-    <a href="#seccion-bebidas" style="color: #9ca3af; text-decoration: none; font-weight: 600; font-size: 0.85rem; padding: 0.4rem 1rem; background: #1c1a1a; border-radius: 999px; white-space: nowrap;" onclick="seleccionarNav(this)">🥤 Bebidas</a>
-    <a href="#seccion-extras" style="color: #9ca3af; text-decoration: none; font-weight: 600; font-size: 0.85rem; padding: 0.4rem 1rem; background: #1c1a1a; border-radius: 999px; white-space: nowrap;" onclick="seleccionarNav(this)">🔥 Extras</a>
+  <!-- Navegación y Filtro por Categorías -->
+  <nav class="menu-navegacion" aria-label="Filtro de productos por categoría">
+    <button type="button" class="filtro-btn activo" onclick="filtrarCategoria('todos', this)">🍽️ Todos</button>
+    <button type="button" class="filtro-btn" onclick="filtrarCategoria('comida', this)">🥩 Carnes</button>
+    <button type="button" class="filtro-btn" onclick="filtrarCategoria('bebidas', this)">🥤 Bebidas</button>
+    <button type="button" class="filtro-btn" onclick="filtrarCategoria('extras', this)">🔥 Extras</button>
   </nav>
 
   <main>
-    <!-- SECCIÓN 1: COMIDA / CORTES -->
-    <section id="seccion-comida">
-      <h2>Cortes y Comida</h2>
-      <div class="grid" id="catalogo-comida">
+    <!-- Catálogo de Productos (Renderizado en el Cliente - CSR) -->
+    <section id="seccion-catalogo">
+      <h2 id="titulo-catalogo">Menú Asadero</h2>
+      <div class="grid" id="catalogo">
         <!-- Aquí cargan dinámicamente tus productos mediante csr.js -->
-        <div class="producto">
-          <img src="icons/arrachera.jpg" alt="Arrachera" class="producto__foto">
-          <strong>Arrachera (kg)</strong>
-          <span class="precio">$480</span>
-          <p>Stock: 20</p>
-          <button type="button" onclick="agregarAlCarrito({ id: 1, nombre: 'Arrachera (kg)', precio: 480 })">Agregar al carrito</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN 2: BEBIDAS -->
-    <section id="seccion-bebidas">
-      <h2>Bebidas</h2>
-      <div class="grid" id="catalogo-bebidas">
-        <!-- Aquí cargan dinámicamente tus bebidas -->
-      </div>
-    </section>
-
-    <!-- SECCIÓN 3: EXTRAS / GUARNICIONES -->
-    <section id="seccion-extras">
-      <h2>Guarniciones y Extras</h2>
-      <div class="grid" id="catalogo-extras">
-        <!-- Aquí cargan dinámicamente los extras -->
       </div>
     </section>
 
@@ -91,12 +71,13 @@
       </div>
     </section>
 
-    <!-- SECCIÓN: SUCURSAL Y MAPA (Opcional/Habilitada) -->
+    <!-- SECCIÓN: SUCURSAL Y MAPA (Opcional/Habilitada)
     <section style="margin-top: 2rem;">
-      <!--<h2>📍 Ubicación</h2>
+      <h2>📍 Ubicación</h2>
       <p class="sucursal-info">Asadero Lizaola - Hermosillo, Sonora</p>
       <div class="mapa" id="mapa"></div>
-    </section>-->
+    </section>
+    -->
   </main>
 
   <footer style="background: linear-gradient(180deg, #151414 0%, #0a0909 100%); border-top: 2px solid #7d3636; color: #f3f4f6; margin-top: 4rem; padding: 2.5rem 1.5rem 1.5rem; box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);">
@@ -117,7 +98,7 @@
           <svg style="width: 24px; height: 24px; fill: #ffffff;" viewBox="0 0 24 24"><path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/></svg>
         </div>
         <p style="margin: 0 0 0.25rem; font-weight: 700; color: #ffffff; font-size: 0.95rem;">Hermosillo, Sonora.</p>
-        <p style="margin: 0; color: #9ca3af; font-size: 0.85rem;">Asadero Lizaola</p>-->
+        <p style="margin: 0; color: #9ca3af; font-size: 0.85rem;">Asadero Lizaola</p>
       </div>
 
       <!-- 3. Redes y Teléfono -->
@@ -146,9 +127,11 @@
   <!-- Scripts -->
   <script src="js/carrito.js"></script>
   <script src="js/csr.js"></script>
+  <script src="js/app.js"></script>
+  <!-- Scripts de avances posteriores (se activarán en su respectivo avance):
   <script src="js/notificaciones.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-  <!-- <script src="js/geolocalizacion.js"></script>-->
-  <script src="js/app.js"></script>
+  <script src="js/geolocalizacion.js"></script>
+  -->
 </body>
 </html>

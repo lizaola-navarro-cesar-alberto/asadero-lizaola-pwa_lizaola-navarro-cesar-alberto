@@ -13,13 +13,12 @@
 </head>
 <body>
     <h1>Menú del Asadero Lizaola (SSR)</h1>
-    <p>Este HTML ya viene con los productos escritos desde el servidor.</p>
     <ul>
       {% for producto in productos %}
         <li>
           <strong>{{ producto.nombre }}</strong> — 
           <span class="precio">${{ producto.precio }} MXN</span> 
-          (<em>{{ producto.categoria }}</em>)
+          (Stock: {{ producto.stock }})
         </li>
       {% endfor %}
     </ul>
