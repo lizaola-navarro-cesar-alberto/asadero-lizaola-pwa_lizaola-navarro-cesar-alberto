@@ -18,7 +18,7 @@
 | 4 | (se escribe en el reporte PDF) | 01/11/2026 |
 
 ## Comparación SSR vs CSR
-git add .
+
 ### SSR (Django): los productos llegan escritos en el HTML
 ![Código fuente SSR](docs/captura-ssr.png)
 

@@ -1,8 +1,8 @@
 {
   "id": "./",
   "name": "Asadero Lizaola",
-  "short_name": "Asadero",
-  "description": "Menú digital PWA de Asadero Lizaola: cortes de carne, comidas, bebidas y extras con opción de pedidos.",
+  "short_name": "Asadero Lizaola",
+  "description": "Menú de Asadero Lizaola: carne, bebidas y extras.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
