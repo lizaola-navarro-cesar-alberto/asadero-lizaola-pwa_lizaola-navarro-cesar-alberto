@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Asadero Lizaola — PWA de ventas</title>
+  <title>Asadero Lizaola</title>
 
   <!-- PWA Manifest & Icons -->
   <link rel="manifest" href="manifest.json">
@@ -71,13 +71,29 @@
       </div>
     </section>
 
+
+    <!-- SECCIÓN: NOTIFICACIONES -->
+  <section style="margin-top: 2rem; padding: 1.5rem; background: #1c1a1a; border-radius: 12px; color: #fff;">
+    <h2>🔔 Notificaciones</h2>
+    <p style="color: #9ca3af; font-size: 0.9rem;">Recibe alertas sobre el estado de tus pedidos y promociones.</p>
+    <button type="button" id="btn-notificar" style="background: #7d3636; color: white; padding: 0.75rem 1.25rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Activar Notificaciones</button>
+    <p id="notificaciones-mensaje" style="margin-top: 0.75rem; font-size: 0.9rem; color: #ffc767;"></p>
+  </section>
+
     <!-- SECCIÓN: SUCURSAL Y MAPA -->
-    <section style="margin-top: 2rem;">
-      <h2>📍 Ubicación</h2>
-      <p class="sucursal-info">Asadero Lizaola - Hermosillo, Sonora</p>
-      <div class="mapa" id="mapa" style="height: 300px; width: 100%; border-radius: 8px;"></div>
-    </section>
-  </main>
+  <section style="margin-top: 2rem; padding: 1.5rem; background: #1c1a1a; border-radius: 12px; color: #fff;">
+    <h2>📍 Ubicación y Ruta</h2>
+    <p class="sucursal-info">Asadero Lizaola</p>
+    
+    <div style="margin-bottom: 1rem;">
+      <button type="button" id="btn-ubicacion" style="background: #7d3636; color: white; padding: 0.75rem 1.25rem; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Calcular ruta desde mi ubicación</button>
+      <p id="ubicacion-mensaje" style="margin-top: 0.75rem; font-size: 0.9rem; color: #ffc767;"></p>
+    </div>
+
+
+    <!-- Contenedor del mapa de Leaflet (arranca oculto hasta que se calcula la ruta) -->
+    <div id="mapa-ruta" style="height: 350px; width: 100%; border-radius: 8px;" hidden></div>
+  </section>
 
   <footer style="background: linear-gradient(180deg, #151414 0%, #0a0909 100%); border-top: 2px solid #7d3636; color: #f3f4f6; margin-top: 4rem; padding: 2.5rem 1.5rem 1.5rem; box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);">
     <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2.5rem; text-align: center; align-items: start;">

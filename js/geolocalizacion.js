@@ -4,11 +4,11 @@
 // El navegador SIEMPRE pide permiso antes de compartir la ubicación.
 // Nota: por seguridad, esta API solo funciona en https:// o en localhost.
 
-// Coordenadas de la única sucursal física de la tienda: el campus real de la
-// Universidad Tecnológica de Hermosillo (UTH), tomadas directamente del
+// Coordenadas de la única sucursal física de la tienda:
+// Asadero Lizaola, tomadas directamente del
 // enlace "Compartir → Insertar un mapa" de Google Maps para ese lugar.
 const SUCURSAL = {
-  nombre: "Universidad Tecnológica de Hermosillo (UTH)",
+  nombre: "Asadero Lizaola",
   lat: 29.1001,
   lon: -110.9259,
 };
@@ -135,15 +135,10 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           const distanciaKm = calcularDistanciaKm(latitude, longitude, SUCURSAL.lat, SUCURSAL.lon);
           mensaje.innerHTML =
-            `No se pudo calcular la ruta por calles; línea recta de ` +
-            `<strong>${distanciaKm.toFixed(1)} km</strong> hasta ${SUCURSAL.nombre}. ` +
-            `<a href="${mapaUrl}" target="_blank" rel="noopener">Abrir en el mapa</a>`;
+            ` `;
         }
       },
-      // función que se ejecuta SI el usuario rechaza o hay un error
-      (error) => {
-        mensaje.textContent = "No se pudo obtener tu ubicación: " + error.message;
-      }
+
     );
   });
 });
