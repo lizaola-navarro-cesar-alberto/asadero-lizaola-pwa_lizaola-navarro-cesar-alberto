@@ -33,7 +33,7 @@
 | 1 | 12b7a0a | 11/10/2026 |
 | 2 | 8e28672 | 18/10/2026 |
 | 3 | cb730de | 25/10/2026 |
-| 4 | (se escribe en el reporte PDF) | 01/11/2026 |
+| 4 | 6e00270 | 01/11/2026 |
 
 ## Comparación SSR vs CSR
 
