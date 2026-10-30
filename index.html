@@ -15,6 +15,9 @@
 
   <!-- Leaflet Maps CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+
+  <!-- Leaflet Routing Machine CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/perliedman-leaflet-control-routing-machine/3.2.12/leaflet-routing-machine.css" />
 </head>
 <body>
 
@@ -143,37 +146,26 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Scripts (Orden correcto de dependencias) -->
   <script src="js/carrito.js"></script>
   <script src="js/csr.js"></script>
   <script src="js/app.js"></script>
+  
+  <!-- Leaflet y Extensiones -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/perliedman-leaflet-control-routing-machine/3.2.12/leaflet-routing-machine.min.js"></script>
+  
   <script src="js/notificaciones.js"></script>
   <script src="js/geolocalizacion.js"></script>
 
-  <!-- Script para ocultar el Splash Screen con desvanecimiento -->
-  <script>
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const splash = document.getElementById('splash-screen');
-        if (splash) {
-          splash.classList.add('fade-out');
-          setTimeout(() => splash.remove(), 600); // Se elimina del DOM tras la animación
-        }
-      }, 1600); // Tiempo que dura visible la animación de carga (1.6 segundos)
-    });
-
-    if ('serviceWorker' in navigator) { 
-      navigator.serviceWorker.register("sw.js"); 
-    }
-  </script>
+  <!-- Script único para Splash Screen y Service Worker -->
   <script>
     window.addEventListener('load', () => {
       setTimeout(() => {
         const splash = document.getElementById('splash-screen');
         if (splash) {
           splash.classList.add('open');
-          setTimeout(() => splash.remove(), 900); // Se elimina del DOM al terminar la apertura
+          setTimeout(() => splash.remove(), 900); // Se elimina del DOM al terminar la apertura lateral
         }
       }, 1600); // 1.6 segundos de animación de brasas antes de abrirse
     });
