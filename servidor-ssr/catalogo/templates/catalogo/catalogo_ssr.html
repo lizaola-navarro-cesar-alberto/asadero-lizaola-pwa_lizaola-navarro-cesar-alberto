@@ -1,0 +1,10 @@
+<h1>Catálogo renderizado en el servidor (SSR) - Asadero Lizaola</h1>
+<ul>
+  {% for producto in productos %}
+    <li>
+      <strong>{{ producto.nombre }}</strong> —
+      <span class="precio">${{ producto.precio }} MXN</span>
+      (<em>{{ producto.categoria }}</em>)
+    </li>
+  {% endfor %}
+</ul>
