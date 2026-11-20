@@ -346,3 +346,34 @@ button:active {
   .carrito-precio { grid-area: precio; justify-self: end; font-size: 1.1rem; }
   .carrito-quitar { grid-area: quitar; justify-self: start; margin-top: 0.2rem; }
 }
+
+/* Botones interactivos de filtrado por categoría */
+.filtro-btn {
+  background: #1c1a1a !important;
+  color: #9ca3af !important;
+  border: 1px solid #2c2929 !important;
+  border-radius: 999px !important;
+  padding: 0.45rem 1.15rem !important;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s ease !important;
+  font-family: inherit;
+  width: auto !important;
+  box-shadow: none !important;
+}
+ 
+.filtro-btn:hover {
+  background: #272424 !important;
+  color: #ffffff !important;
+  border-color: #444040 !important;
+}
+ 
+.filtro-btn.activo {
+  background: #7d3636 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border-color: #991b1b !important;
+  box-shadow: 0 2px 10px rgba(125, 54, 54, 0.5) !important;
+}
