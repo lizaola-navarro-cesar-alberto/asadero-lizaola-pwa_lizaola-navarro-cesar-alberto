@@ -1,0 +1,9 @@
+# Django (servidor-ssr): entorno virtual, base de datos y caché de Python
+servidor-ssr/venv/
+servidor-ssr/db.sqlite3
+__pycache__/
+*.py[cod]
+
+# IDE y editores
+.vscode/
+.idea/
