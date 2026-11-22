@@ -59,7 +59,7 @@ PWA de ventas de la Unidad 2 (Aplicaciones Web Progresivas) para **Asadero Lizao
 | 1 | 12b7a0a | 11/10/2026 |
 | 2 | d09441b | 20/11/2026 (recuperación) |
 | 3 | cb730de | 25/10/2026 |
-| 4 | (se escribe en la portada del reporte PDF) | 22/11/2026 (recuperación) |
+| 4 | (0bb66de) | 22/11/2026 (recuperación) |
  
 ## Comparación SSR vs CSR
  
